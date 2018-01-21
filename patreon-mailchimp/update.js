@@ -47,7 +47,7 @@ if (pledge.isDeclined || pledge.isPaused) {
 /**
  * Primary fetch logic for updating our corresponding Mailchimp subscriber.
  *
- * @param {object} body - POST/PUT json body
+ * @param {object} body - PATCH JSON body
  * @see https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/
  */
 function updateMailchimp(body) {
@@ -104,7 +104,7 @@ function slackAlert() {
   fetch(webhook, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({text: message}),
+    body: JSON.stringify({text: `Patron changed! ${message}`}),
   })
     .catch(callback);
 }
