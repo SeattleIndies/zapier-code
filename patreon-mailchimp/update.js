@@ -19,7 +19,7 @@ const pledge = {
   email: inputData.email,
   emailHash: md5(inputData.email),
   amount: parseInt(inputData.amount, 10) / 100, // Convert from cents to $
-  isPaused: ('true' == inputData.isPaused.toLowerCase()) ? true : false,
+  isPaused: inputData.isPaused,
   isDeclined: inputData.isDeclined,
 };
 // Debugging
