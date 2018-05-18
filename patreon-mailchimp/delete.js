@@ -42,29 +42,8 @@ function deleteFromMailchimp() {
       return res.json();
     })
     .then(function(json) {
-      slackAlert();
-      var output = json;
-      callback(null, output);
+      callback(null, {success: message});
     })
-    .catch(callback);
-
-  // Debugging
-  console.log(message);
-}
-
-/**
- * Post to Slack whenever something happens on Zapier.
- * Very rudimentary logging/debugging. If issues (timeouts, etc) happen often,
- * we'll need to implement more robust error catching, alerting, and messaging.
- */
-function slackAlert() {
-  const webhook = '<slack_hook_here>';
-
-  fetch(webhook, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({text: `Patron unpledged :cry: ${message}`}),
-  })
     .catch(callback);
 }
 
